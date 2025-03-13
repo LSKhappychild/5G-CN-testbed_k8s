@@ -1,0 +1,3 @@
+[submodule "openverso-charts"]
+	path = openverso-charts
+	url = https://github.com/Gradiant/openverso-charts.git
