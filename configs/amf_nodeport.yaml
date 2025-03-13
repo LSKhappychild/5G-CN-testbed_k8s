@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: amf-sctp-service
+  namespace: open5gs
+spec:
+  # NodePort makes the service accessible externally on <NodeIP>:<nodePort>.
+  type: NodePort
+
+  # This selector must match labels on your AMF Pod(s) or Deployment.
+  selector:
+          epc-mode: amf
+
+  ports:
+    - name: sctp-amf
+      # Specify SCTP here (instead of TCP/UDP).
+      protocol: SCTP
+      # The service port (the port inside the cluster).
+      port: 38412
+      # Container port, i.e., the AMF’s listening port.
+      targetPort: 38412
+      # NodePort for external access. Pick a free port in the 30000-32767 range.
+      # If you omit 'nodePort:', Kubernetes will auto-assign one.
+      nodePort: 30051
+

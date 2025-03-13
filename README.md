@@ -6,6 +6,9 @@ testbed setup for 5G Core Network deployment over 8s
 # DETAILS
 
 # based on guideline here : https://luthfi.dev/posts/5g-cloud-native-simulation-with-open5gs/
+# and also look at : https://github.com/AIDY-F2N/OAI-UERANSIM
+
+# if you have error in creating new CRI runtime, check /etc/containerd/config.toml and enable cri v1
 
 # Instead of ROOK-CEPH, just create PV manually
     - kc apply -f ./configs/mongodb-py.yaml (yaml inside configs)
@@ -28,7 +31,7 @@ testbed setup for 5G Core Network deployment over 8s
 '''
     - admin / 1423 by default
 
-# UERANSIM configuration
+## UERANSIM configuration ##
 # for matching configuration, run tcpdump inside AMF pod and check gNB's NGAP request to be clear
     - all configuration (SST, MCC, ..etc) in opensource-5g-core-service-mesh/helm-chart/values.yaml and openverso-charts/charts/ueransim-gnb/values.yaml should match
 ![Image](https://github.com/user-attachments/assets/23fe3e30-2c5d-46a7-a86c-63136c510d5a)
@@ -37,3 +40,14 @@ testbed setup for 5G Core Network deployment over 8s
     - TODO : make sh script for this.
 
 # Don't confuse open5gs side UE/gNB with UERANSIM side UE/gNB
+
+# Everytime you rollout the deployment, following configuration should be revised
+    - gNB's configuration -> amfConfig's address field
+    - UE's configuration -> gnbSearchList field
+
+
+## PacketRusher configuration ##
+# github repo says docker is not supported, so run outside k8s cluster
+# setup nodeport, using kc apply -f ./configs/amf_nodeport.yaml
+# for packetrusher config.yaml, change gNB's N2/3 ip to node's ip running packetrusher, and node that running AMF's pod
+# match forwarding port's number designated in amf_nodeport.yaml
