@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 from pymongo import MongoClient
-
+from utils import get_mongodb_ip
 def main():
     # Update this URI to match your actual MongoDB endpoint
-    mongo_uri = "mongodb://10.244.4.63:27017"
+    mongodb_ip = get_mongodb_ip(namespace="open5gs")
+    
+    mongo_uri = f"mongodb://{mongodb_ip}:27017"
     
     # Connect to MongoDB
     client = MongoClient(mongo_uri)

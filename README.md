@@ -12,6 +12,7 @@ testbed setup for 5G Core Network deployment over 8s
 
 # Instead of ROOK-CEPH, just create PV manually
     - kc apply -f ./configs/mongodb-py.yaml (yaml inside configs)
+    - you should properly set nodeAffinity section and hostpath section
 
 # WebUI on port 3000, forwarding needed : 
     - kubectl port-forward <pod> -n open5gs 3000:3000
@@ -30,6 +31,7 @@ testbed setup for 5G Core Network deployment over 8s
 ... })
 '''
     - admin / 1423 by default
+    - should reside inside open5gs/accounts collection
 
 ## UERANSIM configuration ##
 # for matching configuration, run tcpdump inside AMF pod and check gNB's NGAP request to be clear
@@ -51,3 +53,7 @@ testbed setup for 5G Core Network deployment over 8s
 # setup nodeport, using kc apply -f ./configs/amf_nodeport.yaml
 # for packetrusher config.yaml, change gNB's N2/3 ip to node's ip running packetrusher, and node that running AMF's pod
 # match forwarding port's number designated in amf_nodeport.yaml
+
+
+## Open5GS latest : helm pull oci://registry-1.docker.io/gradiant/open5gs --version 2.2.6
+    - this uses docker for open5Gs 2.7.2, which is the latest.

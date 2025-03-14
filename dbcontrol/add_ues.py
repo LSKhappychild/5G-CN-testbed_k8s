@@ -4,6 +4,8 @@ import sys
 
 from ruamel.yaml import YAML
 from pymongo import MongoClient
+ 
+from utils import get_mongodb_ip
 
 def feed_subscribers_minimal(yaml_file, mongo_uri):
     """
@@ -60,12 +62,14 @@ def feed_subscribers_minimal(yaml_file, mongo_uri):
     print(f"[INFO] Documents after insertion: {after_count}")
 
 def main():
+    mongodb_ip = get_mongodb_ip(namespace="open5gs")
+    
     parser = argparse.ArgumentParser(
         description="Minimal feeder script: reads all YAML entries and inserts them into open5gs.subscribers."
     )
     parser.add_argument("--yaml-file", default="subscribers.yaml",
                         help="Path to the YAML file to insert.")
-    parser.add_argument("--mongo-uri", default="mongodb://10.244.4.63:27017",
+    parser.add_argument("--mongo-uri", default=f"mongodb://{mongodb_ip}:27017",
                         help="MongoDB URI (with host:port, or auth if needed).")
     args = parser.parse_args()
 

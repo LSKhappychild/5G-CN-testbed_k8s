@@ -2,7 +2,13 @@
 
 kc create ns open5gs
 
-cd ~/opensource-5g-core-service-mesh/helm-chart
+kc label ns open5gs istio-injection-
 
-helm -n open5gs install -f values.yaml open ./
+kc apply -f ../configs/mongodb-pv.yaml
+
+cd ../open5gs
+
+helm -n open5gs install -f values-5g.yaml open ./
+
+kc apply -f ../configs/amf-nodeport.yaml
 

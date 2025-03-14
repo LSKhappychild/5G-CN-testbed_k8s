@@ -15,3 +15,5 @@ sudo sysctl net.bridge.bridge-nf-call-iptables=1
 sudo systemctl enable docker
 
 sudo kubeadm reset
+
+sudo rm -rf /etc/cni/net.d

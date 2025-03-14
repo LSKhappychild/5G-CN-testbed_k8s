@@ -15,6 +15,11 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-            - oai-worker3
+            - mango3 # change this dynamially
   hostPath:
-    path: /tmp/data/mongodb
+    path: /tmp/mongodb-lsk # should create this directory
+
+    # NOTE : if mongodb pod reports permission denied
+    # Try below
+    # sudo chown 1001:1001 /tmp/mongodb-lsk
+    # sudo chmod 750 /tmp/mongodb-lsk

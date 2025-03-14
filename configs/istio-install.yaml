@@ -1,0 +1,16 @@
+apiVersion: install.istio.io/v1alpha1
+kind: IstioOperator
+metadata:
+  name: istio-demo
+  namespace: istio-system
+spec:
+  # "demo" profile installs Jaeger, Kiali, Prometheus, Grafana, etc.
+  profile: demo
+
+  # Optionally configure full sampling. (In production, consider lowering this.)
+  meshConfig:
+    enableTracing: true
+    defaultConfig:
+      tracing:
+        sampling: 100
+
