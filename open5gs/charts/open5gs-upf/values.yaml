@@ -236,6 +236,7 @@ podSecurityContext:
 ##
 containerSecurityContext:
   enabled: true
+  runAsUser: 0           # Force the container to run as root
   runAsNonRoot: false
   privileged: true
   capabilities:
