@@ -15,7 +15,7 @@ spec:
         - key: kubernetes.io/hostname
           operator: In
           values:
-            - mango3 # change this dynamially
+            - mango2 # change this dynamially
   hostPath:
     path: /tmp/mongodb-lsk # should create this directory
 

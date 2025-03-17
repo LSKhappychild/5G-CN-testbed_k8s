@@ -10,7 +10,7 @@ spec:
   # This selector must match labels on your AMF Pod(s) or Deployment.
   selector:
           app.kubernetes.io/name: amf # This should be correctly set. Refer description of AMF pod.
-
+          #epc-mode: amf
   ports:
     - name: sctp-amf
       # Specify SCTP here (instead of TCP/UDP).

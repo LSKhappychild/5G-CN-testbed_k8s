@@ -76,7 +76,7 @@ image:
   debug: false
 
 config:
-  logLevel: info
+  logLevel: debug
   # advertise: provide custom SBI address to be advertised to NRF
   sbi:
     server:
@@ -104,8 +104,8 @@ config:
         mcc: "208"
         mnc: "93"
       s_nssai:
-        - sst: 0x01
-        - sd: "ffffff"
+        - sst: 1
+          sd : "0xffffff"
   networkName: internet
 
 ## @param customOpen5gsConfig overwrite open5gs configuration file
@@ -254,8 +254,8 @@ podSecurityContext:
 ##
 containerSecurityContext:
   enabled: true
-  runAsUser: 1001
-  runAsNonRoot: true
+  runAsUser: 0
+  runAsNonRoot: false
 ## Configure extra options for startup probe
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#configure-probes
 ## @param startupProbe.enabled Enable startupProbe

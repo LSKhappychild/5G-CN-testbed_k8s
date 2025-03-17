@@ -10,4 +10,4 @@ cd ../open5gs
 
 helm -n open5gs install -f values-5g.yaml open ./
 
-kc apply -f ../configs/amf-nodeport.yaml
+kc apply -f ../configs/amf_nodeport.yaml
