@@ -4,6 +4,7 @@
 
 This document describes the testbed setup for deploying a **5G Core Network** on Kubernetes. The deployment integrates **Open5GS**, **Istio**, dashboards (such as Kiali and Grafana), and traffic simulators like **PacketRusher** or **UERANSIM**.
 
+contact : sklee07074@kaist.ac.kr
 ---
 
 
