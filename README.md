@@ -48,8 +48,10 @@
 - Ensure your CRI runtime is set up correctly.
 
 - If you encounter errors creating a new CRI runtime, check `/etc/containerd/config.toml` and make sure **CRI v1** is enabled.
-
-  
+```
+[plugins."io.containerd.grpc.v1.cri"]
+systemd_cgroup = true
+```
 
 ### Istio Installation
 
