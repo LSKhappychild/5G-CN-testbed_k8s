@@ -2,8 +2,9 @@
 # 5G-CN Testbed on Kubernetes
 
 
-This document describes the testbed setup for deploying a **5G Core Network** on Kubernetes. The deployment integrates **Open5GS**, **Istio**, dashboards (such as Kiali and Grafana), and traffic simulators like **PacketRusher** or **UERANSIM**.
+- This document describes the testbed setup for deploying a **5G Core Network** on Kubernetes. The deployment integrates **Open5GS**, **Istio**, dashboards (such as Kiali and Grafana), and traffic simulators like **PacketRusher** or **UERANSIM**.
 
+- contact : sklee07074@kaist.ac.kr
 ---
 
 
@@ -47,8 +48,10 @@ This document describes the testbed setup for deploying a **5G Core Network** on
 - Ensure your CRI runtime is set up correctly.
 
 - If you encounter errors creating a new CRI runtime, check `/etc/containerd/config.toml` and make sure **CRI v1** is enabled.
-
-  
+```
+[plugins."io.containerd.grpc.v1.cri"]
+systemd_cgroup = true
+```
 
 ### Istio Installation
 
