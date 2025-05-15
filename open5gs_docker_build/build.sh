@@ -1,0 +1,1 @@
+docker buildx build   --build-context open5gs=/home/sklee/open5gs   --build-arg version=dev   -t my-open5gs .
